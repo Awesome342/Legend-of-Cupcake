@@ -8,41 +8,36 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 public class Graphics {
 	public Map Level;
 	SpriteBatch Screen;
-	private Charector Player;
+	private Player Knight;
 	
 	public Graphics() {
 		Level = new Map();
 		Screen = new SpriteBatch();
-		Player = new Charector(20, 200, 32, 32, 0, 0, "data/BoyKnight_Moosader.png");
+		Knight = new Player();
 	}
 	
 	public void get_input() {
 		if (Gdx.input.isKeyPressed(Keys.RIGHT)) {
-			Player.x += 5;
+			Knight.PlayerNPC.x += 5;
 		}
 		if (Gdx.input.isKeyPressed(Keys.LEFT)) {
-			Player.x -= 5;
+			Knight.PlayerNPC.x -= 5;
 		}
 		if (Gdx.input.isKeyPressed(Keys.UP)) {
-			Player.y += 5;
+			Knight.PlayerNPC.y += 5;
 		}
 		if (Gdx.input.isKeyPressed(Keys.DOWN)) {
-			Player.y -= 5;
+			Knight.PlayerNPC.y -= 5;
 		}
 	}
 	
 	public void draw() {
 		get_input();
-		Level.update(Player.x, Player.y);
+		Level.update(Knight.PlayerNPC.x, Knight.PlayerNPC.y);
 		
 		Screen.begin();
 		Level.draw(Screen);
-		Screen.draw(Player.ImgClip, Player.x, Player.y);
+		Knight.draw(Screen);
 		Screen.end();
-	}
-	
-	public void move_player(int x, int y) {
-		Player.x = x;
-		Player.y = y;
 	}
 }
