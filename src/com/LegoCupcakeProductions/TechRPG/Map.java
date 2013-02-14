@@ -20,6 +20,8 @@ public class Map {
 	 public NPC Player;
 	 public Battle Fight;
 	 public Player Knight;
+	 public int newX;
+	 public int newY;
 	
 	public Map() {
 		Map1 = new Level(null, null, null, null, null, null, null, null, 0, "data/Village1.png");
@@ -85,7 +87,10 @@ public class Map {
 		if (Collide(x, Coa.x, y, Coa.y)) {
 			Fight.IsBattle = true;
 		}
-
+		
+		newX = x;
+		newY = y;
+		Knight.updatePOS();
 	}
 	
 	public void change_map(int new_map) {
