@@ -1,8 +1,8 @@
-package com.LegoCupcakeProductions.TechRPG;
+package com.LegoCupcakeProductions.RPG;
 
 import com.badlogic.gdx.ApplicationListener;
 
-public class TechRPG implements ApplicationListener {
+public class RPG implements ApplicationListener {
 	Graphics Sprite;
 	
 	@Override
@@ -25,7 +25,6 @@ public class TechRPG implements ApplicationListener {
 	@Override
 	public void render() {
 		Sprite.draw();
-		
 	}
 
 	@Override
