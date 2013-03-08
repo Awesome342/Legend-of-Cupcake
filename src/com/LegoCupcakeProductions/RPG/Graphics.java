@@ -6,7 +6,7 @@ public class Graphics {
 	//Class References
 	public Player Knight;
 	public Enemy Baddies;
-	public Map Level;
+	public MapManager Level;
 	
 	//Variables
 	public SpriteBatch Screen;
@@ -15,7 +15,7 @@ public class Graphics {
 		//Class References
 		Knight = new Player();
 		Baddies = new Enemy();
-		Level = new Map();
+		Level = new MapManager();
 		
 		//Variables
 		Screen = new SpriteBatch();
@@ -23,13 +23,13 @@ public class Graphics {
 	
 	public void draw() {
 		Screen.begin();
-		Level.draw(Screen);
+		Level.draw(Screen, Knight.ImgRect);
 		Knight.draw(Screen);
-		Baddies.draw(Screen);
+		Baddies.draw(Screen, Level.currentMap);
 		Screen.end();
 		
 		Knight.CheckInput();
 		Knight.handleDamage(Baddies);
-		Baddies.CheckDamage(Knight.x, Knight.y, Knight.IsAttacking);
+		Baddies.CheckDamage(Knight.ImgRect, Knight.IsAttacking, Level.currentMap);
 	}
 }
